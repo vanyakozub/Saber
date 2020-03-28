@@ -3,28 +3,23 @@
 int main()
 {
 	std::string path = "D:\\Saber\\ser.txt";
-	//path = path.c_str();
-	std::cout << path << std::endl;
 	FILE* file;
 	List l;
 	l.Push_back("Hello");
 	l.Push_back("world!");
-	l.Push_back("I will");
-	l.Push_back("work");
-	l.Push_back("at Saber Interactive!");
-	//l.Pop_front();
-	//l.Pop_front();
+	l.Push_back("this is the");
+	l.Push_back("task");
+	l.Push_back("from Saber Interactive!");
 	l.Set_rand_pointers();
-#pragma warning(suppress : 4996)
 	file = fopen(path.c_str(), "wb");
-	
+	std::cout << std::endl << "Before serialize: " << std::endl << std::endl;
 	l.Print();
 	l.Serialize(file);
 	fclose(file);
-#pragma warning(suppress : 4996)
 	file = fopen(path.c_str(), "rb");
 	List p;
 	p.Deserialize(file);
+	std::cout << std::endl << "After deserialize: " << std::endl << std::endl;
 	p.Print();
 	fclose(file);
 }
